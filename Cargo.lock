@@ -385,7 +385,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ibc-transfer"
+name = "ibc-tutorial"
 version = "0.1.0"
 dependencies = [
  "cosmwasm-schema",
