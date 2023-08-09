@@ -136,7 +136,7 @@ mod tests {
                 assert_eq!(channel_id, &"channel-0".to_string());
                 assert_eq!(to_address, &"dest_address".to_string());
                 assert_eq!(amount, &Coin {
-                    denom: "uatom".into(),
+                    denom: "ucore".into(),
                     amount: 1500u128.into(),
                 });
                 assert_eq!(timeout, &IbcTimeout::with_timestamp(mock_env().block.time.plus_seconds(120)));

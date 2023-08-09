@@ -13,6 +13,12 @@ SUBUNIT=gil
 
 # replace this after you instantiate your contract
 _CONTRACT_ADDRESS_=devcore14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sd4f0ak
+
+IBC_TRANSFER_CHANNEL=channel-0
+IBC_TRANSFER_RECEIVER=osmo16q5ca0kz5tl0arxnt4ynzyk5xs5tq24lfrywnx
+IBC_TRANSFER_AMOUNT=1000ucore
+IBC_TRANSFER_SENDER=${DEV_WALLET}
+
 dev:
 	echo "${PWD}"
 	echo `basename "${PWD}"`
@@ -44,3 +50,6 @@ contract_address:
 	cored-00 q wasm list-contract-by-code $(CODE_ID) --output json $(COREUM_NODE_ARGS) $(COREUM_CHAIN_ID_ARGS) | jq -r '.contracts[-1]'
 	CONTRACT_ADDRESS=$(shell cored-00 q wasm list-contract-by-code $(CODE_ID) --output json $(COREUM_NODE_ARGS) $(COREUM_CHAIN_ID_ARGS) | jq -r '.contracts[-1]')
 	echo $$CONTRACT_ADDRESS
+ibc-transfer:
+	cored tx ibc-transfer transfer transfer $(IBC_TRANSFER_CHANNEL) $(IBC_TRANSFER_RECEIVER) $(IBC_TRANSFER_AMOUNT) --from $(IBC_TRANSFER_SENDER) $(COREUM_CHAIN_ID_ARGS) $(COREUM_NODE_ARGS)
+
