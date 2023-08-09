@@ -24,7 +24,7 @@ add_account:
 build:
 	docker run --rm -v "${PWD}":/code --mount type=volume,source=`basename "${PWD}"`_cache,target=/code/target --mount type=volume,source=registry_cache,target=/usr/local/cargo/registry cosmwasm/rust-optimizer:0.12.6
 deploy:
-	RES=$$(cored-00 tx wasm store artifacts/ft_airdrop.wasm --from ${DEV_WALLET} --gas auto --gas-adjustment 1.3 -y -b block --output json "$(COREUM_NODE_ARGS)" "$(COREUM_CHAIN_ID_ARGS)") ; \
+	RES=$$(cored-00 tx wasm store artifacts/ibc_tutorial.wasm --from ${DEV_WALLET} --gas auto --gas-adjustment 1.3 -y -b block --output json "$(COREUM_NODE_ARGS)" "$(COREUM_CHAIN_ID_ARGS)") ; \
 	echo $$RES ; \
 	CODE_ID=$$(echo $$RES | jq -r '.logs[0].events[-1].attributes[-1].value') ; \
 	echo "Code ID: $$CODE_ID"
