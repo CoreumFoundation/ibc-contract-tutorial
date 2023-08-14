@@ -12,7 +12,7 @@ pub enum ExecuteMsg {
         amount: Coin,
         timeout: IbcTimeout,
     },
-    Increment { channel: String },
+    Increment { channel: String, timeout: IbcTimeout },
 }
 
 

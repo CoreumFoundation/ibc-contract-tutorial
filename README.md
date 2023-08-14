@@ -18,7 +18,7 @@ This tutorial provides a comprehensive guide to the creating a basic IBC smart c
 
 ## Introduction
 
-This README provides an overview of the included Makefile and the `contract.rs` script. The Makefile helps in automating several tasks related to the Coreum blockchain platform, such as development, testing, deployment, and management of smart contracts. The `contract.rs` file contains the Rust-based smart contract logic, which can be deployed onto the Coreum blockchain.
+This tutorial provides an overview of the included Makefile and the `contract.rs` script. The Makefile helps in automating several tasks related to the Coreum blockchain platform, such as development, testing, deployment, and management of smart contracts. The `contract.rs` file contains the Rust-based smart contract logic, which can be deployed onto the Coreum blockchain.
 
 [Jump to Table of Contents](#table-of-contents)
 
@@ -47,6 +47,7 @@ This README provides an overview of the included Makefile and the `contract.rs` 
 - `fund`: Send funds to a specific address.
 - `instantiate`: Instantiate the contract with initial funds and parameters.
 - `contract_address`: Get and display the address of the instantiated contract.
+- `ibc_transfer`: Execute the IBC transfer 
 
 [Jump to Table of Contents](#table-of-contents)
 
