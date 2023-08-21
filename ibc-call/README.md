@@ -47,7 +47,7 @@ This tutorial provides an overview of the included Makefile and the `contract.rs
 - `fund`: Send funds to a specific address.
 - `instantiate`: Instantiate the contract with initial funds and parameters.
 - `contract_address`: Get and display the address of the instantiated contract.
-- `ibc_transfer`: Execute the IBC transfer 
+- `ibc_call_wasm_timeout`: Execute the IBC Call between the smart contracts 
 
 [Jump to Table of Contents](#table-of-contents)
 
@@ -60,7 +60,7 @@ The `contract.rs` file contains the logic for a Rust-based smart contract that c
 1. **Imports**: Import necessary components from `cosmwasm_std` library and local modules.
 2. **Constants**: Specify contract name and version.
 3. **Entry Points**: Functions like `instantiate`, `execute`, and `query` that define the behavior of the contract upon instantiation, execution, and querying.
-4. **Helper Functions**: Such as `transfer` that facilitates token transfer over IBC (Inter-Blockchain Communication).
+4. **Helper Functions**: Such as `try_increment` that facilitates incrementing of ```CONNECTION_COUNTS``` over the IBC call.
 5. **Unit Tests**: A series of tests to ensure the contract's functionality, including token transfers and IBC functionality.
 
 [Jump to Table of Contents](#table-of-contents)
@@ -135,7 +135,7 @@ Manages the message structures used in the smart contract.
 ### Message Types
 
 - **InstantiateMsg**: Message for instantiation.
-- **ExecuteMsg**: Contains variants for different execution commands like `Transfer` and `Increment`.
+- **ExecuteMsg**: Contains variants for different execution commands like `Increment`.
 - **IbcExecuteMsg**: IBC-specific execute message.
 - **QueryMsg**: Defines queries like `GetCount` and `GetTimeoutCount`.
 

@@ -1,0 +1,4 @@
+/ibc-transfer/target/*
+ibc-transfer/target/
+/ibc-call/target/*
+ibc-call/target/

@@ -6,12 +6,6 @@ pub struct InstantiateMsg {}
 
 #[cw_serde]
 pub enum ExecuteMsg {
-    Transfer {
-        channel_id: String,
-        to_address: String,
-        amount: Coin,
-        timeout: IbcTimeout,
-    },
     Increment { channel: String, timeout: IbcTimeout },
 }
 

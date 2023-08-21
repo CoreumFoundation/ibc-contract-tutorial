@@ -20,6 +20,7 @@ DEV_WALLET=dev-wallet
 CODE_ID=1
 SUBUNIT=gil
 _CONTRACT_ADDRESS_=devcore14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9sd4f0ak
+_WALLET_ADDRESS_=devcore17vlkqgpxnrqqrgq877v7a4ymfma0r03g02agg8
 
 IBC_TRANSFER_CHANNEL=channel-0
 IBC_TRANSFER_RECEIVER=osmo1pwvcapna75slt3uscvupfe52492yuzhflhakem
@@ -70,11 +71,11 @@ check:
 
 q:
 	@echo "Querying bank balances..."
-	cored-00 q bank balances devcore1pv6jk3k89uqly098ytnpfkehq6hp35jzmyfk4y
+	cored-00 q bank balances $(_WALLET_ADDRESS_)
 
 fund:
 	@echo "Funding a specific address..."
-	cored-00 tx bank send alice devcore17vlkqgpxnrqqrgq877v7a4ymfma0r03g02agg8 10000000udevcore --broadcast-mode=block
+	cored-00 tx bank send alice $(_WALLET_ADDRESS_) 10000000udevcore --broadcast-mode=block
 
 # =================== QUERIES ==========================
 get_count:
@@ -88,7 +89,5 @@ channels:
 ibc_transfer_cli:
 	@echo "Initiating IBC transfer..."
 	cored-00 tx ibc-transfer transfer transfer $(IBC_TRANSFER_CHANNEL) $(IBC_TRANSFER_RECEIVER) $(IBC_TRANSFER_AMOUNT) --from $(IBC_TRANSFER_SENDER) $(COREUM_CHAIN_ID_ARGS) $(COREUM_NODE_ARGS)
-ibc_transfer_wasm_timeout:
-	cored-00 tx wasm execute $(_CONTRACT_ADDRESS_) "{\"transfer\":{\"channel_id\":\"channel-0\",\"to_address\":\"osmo1pwvcapna75slt3uscvupfe52492yuzhflhakem\",\"amount\":{\"amount\":\"1069\",\"denom\":\"udevcore\"}, \"timeout\": { \"timestamp\": \"9999999000001000000\" } }}" --from ${DEV_WALLET} -b block -y $(COREUM_NODE_ARGS) $(COREUM_CHAIN_ID_ARGS)
 ibc_call_wasm_timeout:
 	cored-00 tx wasm execute $(_CONTRACT_ADDRESS_) "{\"increment\":{\"channel\":\"channel-0\", \"timeout\": { \"timestamp\": \"9999999000001000000\" }}}" --from ${DEV_WALLET} -b block -y $(COREUM_NODE_ARGS) $(COREUM_CHAIN_ID_ARGS)
